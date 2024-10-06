@@ -63,7 +63,7 @@ def delete(sno):
 
 #app ko pukar rahe hai chalne ke liye debug mode mae
 if __name__ ==  "__main__":
-      with app.app_context():
-          db.create_all()
+    #   with app.app_context():
+    #       db.create_all()
 
-app.run(debug = True , port = 8039)
+    app.run(debug = True)
