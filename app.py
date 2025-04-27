@@ -31,7 +31,8 @@ def hello_world():
         db.session.add(todo)
         db.session.commit()
 
-    allTodo = Todo.query.all()
+    allTodo = Todo.query.order_by(Todo.date_created.desc()).all()
+
     return render_template('index.html',allTodo = allTodo)
 
 @app.route('/page2')
@@ -54,7 +55,7 @@ def update(sno):
     todo = Todo.query.filter_by(sno=sno).first()
     return render_template('update.html', todo = todo)
 
-@app.route('/Delete/<int:sno>')
+@app.route('/Delete/<int:sno>', methods=['POST'])  
 def delete(sno):
     todo = Todo.query.filter_by(sno=sno).first()
     db.session.delete(todo)
