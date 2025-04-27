@@ -34,11 +34,11 @@ def hello_world():
     allTodo = Todo.query.all()
     return render_template('index.html',allTodo = allTodo)
 
-@app.route('/dikhana')
-def piyak():
+@app.route('/page2')
+def page2():
     allTodo = Todo.query.all()
     print(allTodo)
-    return 'Htt piyak'
+    return 'welcome to page 2'
 
 @app.route('/Update/<int:sno>', methods = ['GET', 'POST'])
 def update(sno):
@@ -61,11 +61,6 @@ def delete(sno):
     db.session.commit()
     return redirect('/')
 
-#app ko pukar rahe hai chalne ke liye debug mode mae
+#calling app to run in debug mode
 if __name__ ==  "__main__":
-
-      #with app.app_context():
-         # db.create_all()
-
       app.run(debug = True , port = 8039)
-
